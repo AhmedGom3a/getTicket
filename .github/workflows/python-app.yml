@@ -18,8 +18,11 @@ jobs:
         with:
           python-version: '3.x'  # Set the Python version
       
-      - name: Install dependencies
+      - name: Create venv and install dependencies
         run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
           pip install -r .github/workflows/requirements.txt
 
       - name: Build Flask app
