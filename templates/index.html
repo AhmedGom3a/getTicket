@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Upload</title>
+</head>
+<body>
+    {% if numbers %}
+    <a href="/">Try Again</a>
+    <div id="result">
+            <h2>Tickets:</h2>
+            <ul>
+                {% for number in numbers %}
+                    <li><a href="https://servicedesk.powercloud.de/browse/BILLB-{{ number }}">BILLB-{{ number }}</a></li>
+                {% endfor %}
+            </ul>
+    </div>
+    {% else %}
+    <h1>Upload an Image</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="images[]" accept="image/*" multiple>
+        <input type="submit" value="Upload">
+    </form>
+    {% endif %}
+</body>
+</html>
